@@ -1,4 +1,5 @@
 #!/bin/bash
+#获取Android指定app指定进程运行过程中所占用的内存
 
 i=0;
 while [ $i -lt 30 ]; do
