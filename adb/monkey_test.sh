@@ -26,6 +26,10 @@
 #--ignore-timeouts 通常，应用程序发生任何超时错误（如“Application Not responding”对话框）Monkey将停止运行，设置此项，Monkey将继续发送事件给系统，直到事件计数完成。
 #--ignore-security-exception  通常，当程序发生许可错误（例如启动一些需要许可的Activity）导致的异常时，Monkey将停止运行。设置此项，Monkey将继续发送事件给系统，直到事件计数完成。
 
+# ---------------------以下是测试代码：------------------------
+#系统事件占比5%
+monkey -p com.yixia.videoeditor --ignore-crashes --ignore-timeouts --throttle 500 -s 12  -v -v -v 20000  --pct-appswitch 20 --pct-majornav 10 --pct-touch 30 --pct-syskeys 10 --pct-motion 25 --pct-nav 5 > /sdcard/monkey/monkey.log
 
-adb shell monkey -p com.yixia.videoeditor --ignore-crashes --ignore-timeouts --throttle 500 -s 12  -v -v -v 5000 | tee monkeyTest.log
+#无系统事件
+#monkey -p com.yixia.videoeditor --ignore-crashes --ignore-timeouts --throttle 500 -s 12  -v -v -v 20000  --pct-appswitch 20 --pct-majornav 20 --pct-touch 30  --pct-motion 30 > /sdcard/monkey/monkey.log
 
