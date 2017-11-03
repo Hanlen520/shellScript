@@ -1,0 +1,12 @@
+将monkey文件夹下载到桌面
+连接手机
+打开中断（系统命令行）
+输入：cd ~/Desktop    切换到桌面路径
+输入：adb logcat -c   清除日志
+输入：adb push monkey/ /storage/sdcard0/   将monkey文件夹推送到手机端
+输入：adb shell 'sh /sdcard/monkey/monkey.sh'  执行手机里的monkey.sh启动monkey测试
+monkey测试完毕！
+...
+…
+连接手机
+输入：adb pull /sdcard/monkey/monkey.log  导出monkey日志
