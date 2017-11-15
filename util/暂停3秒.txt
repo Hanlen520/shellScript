@@ -1,0 +1,11 @@
+ti1=`date +%s`    #获取时间戳
+ti2=`date +%s`
+i=$(($ti2 - $ti1 ))
+
+while [[ "$i" -ne "3" ]]
+do
+	ti2=`date +%s`
+	i=$(($ti2 - $ti1 ))
+done
+
+echo  "暂停三秒后的输出！"

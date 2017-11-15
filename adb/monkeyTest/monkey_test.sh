@@ -27,9 +27,24 @@
 #--ignore-security-exception  通常，当程序发生许可错误（例如启动一些需要许可的Activity）导致的异常时，Monkey将停止运行。设置此项，Monkey将继续发送事件给系统，直到事件计数完成。
 
 # ---------------------以下是测试代码：------------------------
-#系统事件占比5%
-monkey -p com.yixia.videoeditor --ignore-crashes --ignore-timeouts --throttle 500 -s 12  -v -v -v 20000  --pct-appswitch 20 --pct-majornav 10 --pct-touch 30 --pct-syskeys 10 --pct-motion 25 --pct-nav 5 > /sdcard/monkey/monkey.log
+#系统事件占比10%
+logcat -c  #清除日志
+monkey -p com.yixia.videoeditor --throttle 1000 -s 82  -v -v -v  --pct-appswitch 20 --pct-majornav 10 --pct-touch 30 --pct-syskeys 10 --pct-motion 25 --pct-nav 5 20000 > /sdcard/monkey/monkey.log
+logcat -v time >  /sdcard/monkey/logcat.log & #  如果执行monkey跑出问题异常结束 或者正常跑完monkey，则打印日志（只有3秒的日志获取时间）
+
+ti1=`date +%s`    #获取时间戳
+ti2=`date +%s`
+i=$(($ti2 - $ti1 ))
+while [[ "$i" -ne "3" ]]   
+do
+	ti2=`date +%s`
+	i=$(($ti2 - $ti1 ))
+done
+
+kill $!   #结束后台运行的logcat进程
+echo "-----------------------  测试完成标注！！！  -----------------------" >> /sdcard/monkey/logcat.log
+
 
 #无系统事件
-#monkey -p com.yixia.videoeditor --ignore-crashes --ignore-timeouts --throttle 500 -s 12  -v -v -v 20000  --pct-appswitch 20 --pct-majornav 20 --pct-touch 30  --pct-motion 30 > /sdcard/monkey/monkey.log
+#monkey -p com.yixia.videoeditor --throttle 1000 -s 12  -v -v -v  --pct-appswitch 20 --pct-majornav 20 --pct-touch 30  --pct-motion 30 20000> /sdcard/monkey/monkey.log
 

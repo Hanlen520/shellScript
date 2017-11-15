@@ -10,3 +10,4 @@ monkey测试完毕！
 …
 连接手机
 输入：adb pull /sdcard/monkey/monkey.log  导出monkey日志
+输入：adb pull /sdcard/monkey/logcat.log  导出logcat日志
